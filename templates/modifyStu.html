@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑信息</title>
+    <script src="/static/plugin/jquery-3.6.0.js"></script>
+    <script src="/static/plugin/bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/plugin/bootstrap-3.4.1-dist/css/bootstrap.css">
+    <style>
+        .container {
+            margin-bottom: 30px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">学生信息管理系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href={{ url_for("backstage") }}>返回</a></li>
+                <li class="dropdown">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">学号</label>
+            <input class="form-control" id="No" type="text" name="No" value={{ data[0] }} readonly>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">姓名</label>
+            <input type="text" class="form-control" id="Name" name="Name" placeholder={{ data[1] }}>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">性别</label>
+            <input type="text" class="form-control" id="Sex" name="Sex" placeholder={{ data[2] }}>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="printhello()">提交修改</button>
+    </form>
+</div>
+<script>
+    function printhello() {
+        let no = $("#No").val();
+        let name = $("#Name").val();
+        let sex = $("#Sex").val();
+        if (name.length === 0) {
+            name = $("#Name").attr("placeholder")
+            $("#Name").val(name)
+
+        }
+        if (sex.length === 0) {
+            sex = $("#Sex").attr("placeholder")
+            $("#Sex").val(sex);
+        }
+        $("form").attr("action", "/modifyStu/" + no);
+        $("form").submit();
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <script src="/static/plugin/jquery-3.6.0.js"></script>
+    <script src="/static/plugin/bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/plugin/bootstrap-3.4.1-dist/css/bootstrap.css">
+    <style>
+        .div1 {
+            width: 300px;
+            margin: 50px auto;
+
+        }
+    </style>
+</head>
+<body>
+<div class="div1">
+    <div>
+        <sapn>
+            你寻找的网页走丢了。
+        </sapn>
+    </div>
+    <div>
+        <a class="btn btn-warning" href={{ url_for("login") }}>返回主页</a>
+    </div>
+
+</div>
+</body>
+</html>

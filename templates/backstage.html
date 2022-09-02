@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理系统后台</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='plugin/bootstrap-3.4.1-dist/css/bootstrap.css') }}">
+    <script src="/static/plugin/jquery-3.6.0.js"></script>
+    <script src="/static/plugin/bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+    <script src="/static/js/backstage.js"></script>
+    <style>
+        .container {
+            margin-bottom: 30px;
+        }
+
+        .Navigation {
+            margin-bottom: -15px;
+        }
+
+        div.panel-body {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="Navigation">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand" href="">学生信息管理系统</span>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading btn btn-info ">录入信息</div>
+        <div class="panel-body">
+            <form class="form-inline" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="stuNo" placeholder="No" name="No">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="stuName" placeholder="Name"
+                           name="Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="stuSex" placeholder="Sex" name="Sex">
+                </div>
+                <button id="bth_get" type="button" class="btn btn-primary">录 入</button>
+                {{ msg }}
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">学生信息展示</div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in date_List %}
+                <tr class="stu_tr">
+                    <th scope="row">{{ item[0] }}</th>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>
+                        <a class="btn btn-success btn-sm">编辑</a>
+                        <a class="btn btn-danger btn-sm">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+
+</html>
